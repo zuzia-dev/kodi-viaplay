@@ -272,3 +272,11 @@ msgstr "Litauiska"
 msgctxt "#30067"
 msgid "viaplay.com/nl"
 msgstr ""
+
+msgctxt "#30068"
+msgid "Transmission quality"
+msgstr "Överföringskvalitet"
+
+msgctxt "#30069"
+msgid "More informations"
+msgstr "Mer information"

@@ -35,7 +35,7 @@ profile_path = xbmcvfs.translatePath(xbmcaddon.Addon().getAddonInfo('profile'))
 def run():
     mode = params.get('mode', None)
     action = params.get('action', '')
-    gen = params.get('guid', '')    
+    gen = params.get('guid', '')
 
     if action == 'BUILD_M3U':
         generate_m3u()
@@ -45,7 +45,7 @@ def run():
         tve = params.get('tve', '')
         guid = params.get('guid', '')
         helper.play(url=id, tve=tve, guid=guid)
-    
+
     try:
         plugin.run()
     except helper.vp.ViaplayError as error:
@@ -70,7 +70,7 @@ def generate_m3u():
                                       xbmcgui.NOTIFICATION_ERROR)
         return
     xbmcgui.Dialog().notification('Viaplay', helper.language(30063), xbmcgui.NOTIFICATION_INFO)
-    
+
     data = '#EXTM3U\n'
 
     country_code = helper.get_country_code()
@@ -94,7 +94,7 @@ def generate_m3u():
     channels = [x['viaplay:channel']['content']['title'] for x in channels_block]
     images = [x['viaplay:channel']['_embedded']['viaplay:products'][0]['station']['images']['fallbackImage']['template'] for x in channels_block]
     guids = [x['viaplay:channel']['_embedded']['viaplay:products'][1]['epg']['channelGuids'][0] for x in channels_block]
-    
+
     for i in range(len(channels)):
         image = images[i].split('{')[0]
 
@@ -106,11 +106,11 @@ def generate_m3u():
             title = title + ' ' + helper.get_country_code().upper()
 
         except:
-            title = channels[i] + ' ' + helper.get_country_code().upper() 
+            title = channels[i] + ' ' + helper.get_country_code().upper()
 
         guid = guids[i]
         data += '#EXTINF:-1 tvg-id="%s" tvg-name="%s" tvg-logo="%s" group-title="Viasat",%s\nplugin://plugin.video.viaplay/play?guid=%s&url=None&tve=true\n' % (guid, title, image, title, guid)
-    
+
     f = xbmcvfs.File(path + file_name, 'wb')
     if sys.version_info[0] > 2:
         f.write(data)
@@ -185,7 +185,7 @@ def search():
         else:
             for item in reversed(which):
                 del searches[item]
-                
+
             f = xbmcvfs.File(file_name, "wb")
             if sys.version_info[0] < 3:
                 searches = [x.decode('utf-8') for x in searches]
@@ -204,7 +204,7 @@ def search():
             search = title
         else:
             search = title.encode('utf-8')
-    
+
     if not search:
         return
     searches = (set([search] + searches))
@@ -222,7 +222,7 @@ def search():
 def vod():
     """List categories and collections from the VOD pages (movies, series, kids, store)."""
     helper.add_item(helper.language(30041), plugin.url_for(categories, url=plugin.args['url'][0]))
-    collections = helper.vp.get_collections(plugin.args['url'][0])  
+    collections = helper.vp.get_collections(plugin.args['url'][0])
 
     for i in collections:
         if i['type'] == 'list-featurebox':  # skip feature box for now
@@ -319,7 +319,7 @@ def channels():
 
         if sys.version_info[0] > 2:
             list_title = '[B]{0}[/B]: {1}'.format(channel['content']['title'], current_program_title)
-        else:   
+        else:
             list_title = '[B]{0}[/B]: {1}'.format(channel['content']['title'], current_program_title.encode('utf-8'))
 
         helper.add_item(list_title, plugin_url, art=art)
@@ -541,13 +541,25 @@ def add_sports_event(event):
         playable = False
 
     details = event['content']
+    format = details["format"]["title"]
+    quality = None
+    if format.lower() == 'ultra hd':
+        quality = 'Ultra HD'
+        format = '4K'
 
     if sys.version_info[0] > 2:
         title = details.get('title')
     else:
         title = details.get('title').encode('utf-8')
     try:
-        plotx = details.get('synopsis')
+        if quality and format:
+            plotx = details.get('synopsis') + f'\n{helper.language(30068)}: \t{quality}.\n{helper.language(30069)}: \t{format}.'
+        elif quality:
+            plotx = details.get('synopsis') + f'\n{helper.language(30068)}: \t{quality}.'
+        elif format:
+            plotx = details.get('synopsis') + f'\n{helper.language(30069)}: \t{format}.'
+        else:
+            plotx = details.get('synopsis')
     except:
         plotx = ''
 
@@ -556,7 +568,7 @@ def add_sports_event(event):
         'title': details.get('title'),
         'plot': plotx,
         'year': int(details['production'].get('year')),
-        'genre': details['format'].get('title'),
+        'genre': format,
         'list_title': '[B]{0}:[/B] {1}'.format(coloring(start_time, event_status), title)
     }
 
@@ -684,7 +696,7 @@ def add_tv_event(event):
 
 def add_event(event):
     plugin_url = plugin.url_for(play, guid=event['system']['guid'], url=None, tve='false')
-    
+
     details = event['content']
 
     if sys.version_info[0] > 2:
