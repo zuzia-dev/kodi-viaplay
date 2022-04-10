@@ -1,10 +1,10 @@
-﻿# Viaplay for Kodi #
+﻿# Viaplay unofficial add-on for Kodi
 This is a Kodi add-on that allows you to stream content from Viaplay in Kodi.
 
 ## Disclaimer ##
 This add-on is unoffical and is not endorsed or supported by Viaplay in any way. Any trademarks used belong to their owning companies and organisations.
 
-## Prerequisites ##
+## Prerequisites & Dependencies ##
  * A devices compatible with Kodi
  * Suggested Kodi 18 or above
  * InputStream Adaptive add-on
@@ -25,7 +25,7 @@ Or install it via Kodi file-manager:
  - add source: https://heppen-dev.github.io/ or https://zips.ovh/heppen
 
 Install add-on manually - updates should always be installed manually:
-- [plugin kodi-viaplay]https://github.com/zuzia-dev/kodi-viaplay/archive/refs/heads/master.zip)
+- [plugin kodi-viaplay](https://github.com/zuzia-dev/kodi-viaplay/archive/refs/heads/master.zip)
 
 ## DRM protected streams ##
 Viaplay's content is DRM protected and requires the proprietary decryption module Widevine CDM for playback. You will be prompted to install this if you're attempting to play a stream without the binary installed.
