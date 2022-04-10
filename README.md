@@ -6,6 +6,7 @@ This add-on is unoffical and is not endorsed or supported by Viaplay in any way.
 
 ## Prerequisites & Dependencies ##
  * A devices compatible with Kodi
+ * System with Python 2.7 or later
  * Suggested Kodi 18 or above
  * InputStream Adaptive add-on
  * InputStream Helper add-on
@@ -34,10 +35,10 @@ Most Android devices have built-in support for Widevine DRM and doesn't require 
 
 ## Support ##
 Please report any issues or bug reports on the [zuzia-dev GitHub Issues](https://github.com/zuzia-dev/kodi-viaplay/issues) or
-[emilsvennesso GitHub Issues](https://github.com/emilsvennesson/kodi-viaplay/issues) pages. Remember to include a full, non-cut off Kodi debug log. See the [Kodi wiki page](http://kodi.wiki/view/Log_file/Advanced) for more detailed instructions on how to obtain the log file.
+[emilsvennesson GitHub Issues](https://github.com/emilsvennesson/kodi-viaplay/issues) pages. Remember to include a full, non-cut off Kodi debug log. See the [Kodi wiki page](http://kodi.wiki/view/Log_file/Advanced) for more detailed instructions on how to obtain the log file.
 
 Additional support/discussion about the add-on can be found in the [Viaplay add-on thread](https://forum.kodi.tv/showthread.php?tid=286387).
-And online forum in polish [forum.kodiwpigulce.pl](https://forum.kodiwpigulce.pl/showthread.php?tid=3804).
+And online forum in polish [kodiwpigulce.pl](https://forum.kodiwpigulce.pl/showthread.php?tid=3804)
 
 If you are a person skilled in Python development, you can join as a developer and provide help to fix errors and make new features.
 
