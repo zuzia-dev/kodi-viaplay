@@ -499,8 +499,6 @@ def add_episode(episode):
     episode_info = {
         'mediatype': 'episode',
         'title': details.get('title'),
-        'list_title': details['series']['episodeTitle'] if details['series'].get('episodeTitle') else details.get(
-            'title'),
         'tvshowtitle': details['series'].get('title'),
         'plot': details['synopsis'] if details.get('synopsis') else details['series'].get('synopsis'),
         'duration': details['duration']['milliseconds'] // 1000 if 'duration' in details else None,
@@ -516,7 +514,9 @@ def add_episode(episode):
         'episode': int(details['series'].get('episodeNumber'))
     }
 
-    helper.add_item(episode_info['list_title'], plugin_url, info=episode_info,
+    list_title = details['series']['episodeTitle'] if details['series'].get('episodeTitle') else details.get('title')
+
+    helper.add_item(list_title, plugin_url, info=episode_info,
                     art=add_art(details['images'], 'episode'), content='episodes', playable=True, episode=True)
 
 
@@ -644,10 +644,11 @@ def add_sports_series(event):
         'plot': plotx,
         'year': details['production'].get('year'),
         'genre': genre,
-        'list_title': '[B]{0}:[/B] {1}'.format(coloring(start_time, event_status), title)
     }
 
-    helper.add_item(event_info['list_title'], plugin_url, playable=playable, info=event_info,
+    list_title = '[B]{0}:[/B] {1}'.format(coloring(start_time, event_status), title)
+
+    helper.add_item(list_title, plugin_url, playable=playable, info=event_info,
                     art=add_art(details['images'], 'sport'), content='episodes')
 
 
@@ -699,15 +700,16 @@ def add_tv_event(event):
             'title': details.get('title'),
             'plot': details.get('synopsis'),
             'year': details['production'].get('year'),
-            'list_title': '[B]{0}:[/B] {1}'.format(coloring(start_time, event_status), title)
         }
+
+        list_title = '[B]{0}:[/B] {1}'.format(coloring(start_time, event_status), title)
 
         art = {
             'thumb': event['content']['images']['landscape']['template'].split('{')[0] if 'landscape' in details['images'] else None,
             'fanart': event['content']['images']['landscape']['template'].split('{')[0] if 'landscape' in details['images'] else None
         }
 
-        helper.add_item(event_info['list_title'], plugin_url, playable=playable, info=event_info, art=art, content='episodes')
+        helper.add_item(list_title, plugin_url, playable=playable, info=event_info, art=art, content='episodes')
 
 def add_event(event):
     plugin_url = plugin.url_for(play, guid=event['system']['guid'], url=None, tve='false')
@@ -724,15 +726,16 @@ def add_event(event):
             'title': details.get('title'),
             'plot': details.get('synopsis'),
             'year': details['production'].get('year'),
-            'list_title': '{0}'.format(title)
         }
+
+    list_title = '{0}'.format(title)
 
     art = {
             'thumb': event['content']['images']['landscape']['template'].split('{')[0] if 'landscape' in details['images'] else None,
             'fanart': event['content']['images']['landscape']['template'].split('{')[0] if 'landscape' in details['images'] else None
         }
 
-    helper.add_item(event_info['list_title'], plugin_url, playable=True, info=event_info, art=art, content='episodes')
+    helper.add_item(list_title, plugin_url, playable=True, info=event_info, art=art, content='episodes')
 
 def add_art(images, content_type):
     artwork = {}
