@@ -541,38 +541,53 @@ def add_sports_event(event):
         playable = False
 
     details = event['content']
-    format = details["format"]["title"]
+    format_title = details['format']['title']
+    original_title = details.get('originalTitle')
     quality = None
-    if format.lower() == 'ultra hd':
+    plotx = ''
+
+    if format_title.lower() == 'ultra hd':
         quality = 'Ultra HD'
-        format = '4K'
+        format_title = '4K'
+
+    synopsis = [
+        {
+            'heading': '',
+            'message': details.get('synopsis')
+        },
+        {
+            'heading': helper.language(30068) if quality is not None else None,
+            'message': quality
+        },
+        {
+            'heading': helper.language(30069),
+            'message': f'{format_title} | {original_title}' if original_title is not None else format_title
+        }
+    ]
 
     if sys.version_info[0] > 2:
         title = details.get('title')
     else:
         title = details.get('title').encode('utf-8')
-    try:
-        if quality and format:
-            plotx = details.get('synopsis') + f'\n{helper.language(30068)}: \t{quality}.\n{helper.language(30069)}: \t{format}.'
-        elif quality:
-            plotx = details.get('synopsis') + f'\n{helper.language(30068)}: \t{quality}.'
-        elif format:
-            plotx = details.get('synopsis') + f'\n{helper.language(30069)}: \t{format}.'
+
+    for index, plot in enumerate(synopsis):
+        if index == 0:
+            plotx += f'{plot["heading"]} {plot["message"]}\n'
         else:
-            plotx = details.get('synopsis')
-    except:
-        plotx = ''
+            if plot['heading'] is not None:
+                plotx += f'{plot["heading"]}: {plot["message"]}.\n'
 
     event_info = {
         'mediatype': 'video',
         'title': details.get('title'),
         'plot': plotx,
         'year': int(details['production'].get('year')),
-        'genre': format,
-        'list_title': '[B]{0}:[/B] {1}'.format(coloring(start_time, event_status), title)
+        'genre': format_title,
     }
 
-    helper.add_item(event_info['list_title'], plugin_url, playable=playable, info=event_info,
+    list_title = '[B]{0}:[/B] {1}'.format(coloring(start_time, event_status), title)
+
+    helper.add_item(list_title, plugin_url, playable=playable, info=event_info,
                     art=add_art(details['images'], 'sport'), content='episodes')
 
 

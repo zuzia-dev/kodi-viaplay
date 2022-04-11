@@ -19,3 +19,7 @@ msgstr "Lähetyksen laatu"
 msgctxt "#30069"
 msgid "More informations"
 msgstr "Lisätietoja"
+
+msgctxt "#30070"
+msgid "No information"
+msgstr "Tietoja ei ole saatavilla"

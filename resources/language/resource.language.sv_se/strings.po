@@ -280,3 +280,7 @@ msgstr "Överföringskvalitet"
 msgctxt "#30069"
 msgid "More informations"
 msgstr "Mer information"
+
+msgctxt "#30070"
+msgid "No information"
+msgstr "Ingen information finns tillgänglig"

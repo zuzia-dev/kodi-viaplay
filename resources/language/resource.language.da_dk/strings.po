@@ -19,3 +19,7 @@ msgstr "Transmissionskvalitet"
 msgctxt "#30069"
 msgid "More informations"
 msgstr "Flere oplysninger"
+
+msgctxt "#30070"
+msgid "No information"
+msgstr "Ingen oplysninger tilgængelige"

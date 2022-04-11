@@ -19,3 +19,7 @@ msgstr "Perdavimo kokybė"
 msgctxt "#30069"
 msgid "More informations"
 msgstr "Daugiau informacijos"
+
+msgctxt "#30070"
+msgid "No information"
+msgstr "Informacijos nėra"
