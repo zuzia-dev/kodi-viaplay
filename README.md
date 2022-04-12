@@ -6,11 +6,13 @@ This add-on is unoffical and is not endorsed or supported by Viaplay in any way.
 
 ## Prerequisites & Dependencies ##
  * A devices compatible with Kodi
- * System with Python 2.7 or later
- * Suggested Kodi 18 or above
+ * System with Python 3.7 or later
+ * Suggested Kodi 19 or above
  * InputStream Adaptive add-on
  * InputStream Helper add-on
  * Widevine CDM library
+
+NOTICE: This plugin is not compatible with Kodi 18 (Leia). We highly recommend upgrading to Kodi 19 (Matrix).
 
 If you're installing straight from git, please make sure you've got the following modules installed:
  * script.module.inputstreamhelper
