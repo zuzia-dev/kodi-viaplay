@@ -13,7 +13,8 @@ This add-on is unoffical and is not endorsed or supported by Viaplay in any way.
  * Widevine CDM library
 
 ```diff
--> NOTICE: This plugin is compatible with Kodi 18 (Leia). But we highly recommend upgrading to Kodi 19 (Matrix).
+-> NOTICE: This plugin is compatible with Kodi 18 (Leia). 
+-> But we highly recommend upgrading to Kodi 19 (Matrix). 
 ```
 
 If you're installing straight from git, please make sure you've got the following modules installed:
