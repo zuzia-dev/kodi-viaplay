@@ -6,19 +6,21 @@ This add-on is unoffical and is not endorsed or supported by Viaplay in any way.
 
 ## Prerequisites & Dependencies ##
  * A devices compatible with Kodi
- * System with Python 3.7 or later
- * Suggested Kodi 19 or above
+ * System with Python 2.7 or later
+ * Suggested Kodi 18 or above
  * InputStream Adaptive add-on
  * InputStream Helper add-on
  * Widevine CDM library
 
-NOTICE: This plugin is not compatible with Kodi 18 (Leia). We highly recommend upgrading to Kodi 19 (Matrix).
+```diff
+-> NOTICE: This plugin is compatible with Kodi 18 (Leia). But we highly recommend upgrading to Kodi 19 (Matrix).
+```
 
 If you're installing straight from git, please make sure you've got the following modules installed:
- * script.module.inputstreamhelper
- * script.module.requests
- * script.module.iso8601
- * script.module.routing
+ * script.module.requests - http://mirrors.kodi.tv/addons/leia/script.module.requests/
+ * script.module.iso8601  - http://mirrors.kodi.tv/addons/leia/script.module.iso8601/
+ * script.module.inputstreamhelper - http://mirrors.kodi.tv/addons/leia/script.module.inputstreamhelper/
+ * script.module.routing  - http://mirrors.kodi.tv/addons/leia/script.module.routing/
  
 ## Installation & Updates ##
 Install add-on via repository - provide automatic installation of updates:
@@ -28,7 +30,7 @@ Or install it via Kodi file-manager:
  - add source: https://heppen-dev.github.io/ or https://zips.ovh/heppen
 
 Install add-on manually - updates should always be installed manually:
-- [plugin kodi-viaplay](https://github.com/zuzia-dev/kodi-viaplay/archive/refs/heads/master.zip)
+- [plugin kodi-viaplay](https://github.com/zuzia-dev/kodi-viaplay/archive/refs/heads/K18.zip)
 
 ## DRM protected streams ##
 Viaplay's content is DRM protected and requires the proprietary decryption module Widevine CDM for playback. You will be prompted to install this if you're attempting to play a stream without the binary installed.
