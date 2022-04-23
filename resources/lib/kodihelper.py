@@ -256,6 +256,7 @@ class KodiHelper(object):
                 playitem.setProperty('inputstream', 'inputstream.adaptive')
             else:    
                 playitem.setProperty('inputstreamaddon', 'inputstream.adaptive')
+            playitem.setProperty('inputstream.adaptive.max_bandwidth', '99999999')
             playitem.setProperty('inputstream.adaptive.manifest_type', 'mpd')
             playitem.setProperty('inputstream.adaptive.manifest_update_parameter', 'full')
             playitem.setProperty('inputstream.adaptive.license_type', 'com.widevine.alpha')
