@@ -7,7 +7,6 @@ This add-on is unoffical and is not endorsed or supported by Viaplay in any way.
 ## Prerequisites & Dependencies ##
  * A devices compatible with Kodi
  * System with Python 2.7 or later
- * Suggested Kodi 18 or above
  * InputStream Adaptive add-on
  * InputStream Helper add-on
  * Widevine CDM library
@@ -24,7 +23,7 @@ If you're installing straight from git, please make sure you've got the followin
  * script.module.routing  - http://mirrors.kodi.tv/addons/leia/script.module.routing/
  
 ## Installation & Updates ##
-Install add-on via repository - provide automatic installation of updates:
+Install add-on via repository - provide automatic installation of updates. 
 Download repository: [repository.heppen](https://github.com/heppen-dev/repository.heppen/raw/main/repository.heppen.zip)
 
 Or install it via Kodi file-manager:
