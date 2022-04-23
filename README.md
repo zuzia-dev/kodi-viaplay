@@ -2,7 +2,7 @@
 This is a Kodi add-on that allows you to stream content from Viaplay in Kodi.
 
 ## Disclaimer ##
-This add-on is unoffical and is not endorsed or supported by Viaplay in any way. Any trademarks used belong to their owning companies and organisations.
+This add-on is unoffical and is not endorsed or supported by Viaplay in any way. Any trademarks used belong to their owning companies and organisations. Use at Your Own Risk.
 
 ## Prerequisites & Dependencies ##
  * A devices compatible with Kodi
@@ -12,13 +12,19 @@ This add-on is unoffical and is not endorsed or supported by Viaplay in any way.
  * InputStream Helper add-on
  * Widevine CDM library
 
-NOTICE: This plugin is not compatible with Kodi 18 (Leia). We highly recommend upgrading to Kodi 19 (Matrix).
+```diff
+-> NOTICE: This plugin is not compatible with Kodi 18 (Leia).
+-> We highly recommend upgrading to Kodi 19 (Matrix).
+```
+ * The version for Kodi 18 can be found here: https://github.com/zuzia-dev/kodi-viaplay/tree/K18
+ * But this version may not contain all the fixes and features.
+
 
 If you're installing straight from git, please make sure you've got the following modules installed:
- * script.module.inputstreamhelper
- * script.module.requests
- * script.module.iso8601
- * script.module.routing
+ * script.module.inputstreamhelper - http://mirrors.kodi.tv/addons/matrix/script.module.requests/
+ * script.module.requests - http://mirrors.kodi.tv/addons/matrix/script.module.iso8601/
+ * script.module.iso8601 - http://mirrors.kodi.tv/addons/matrix/script.module.inputstreamhelper/
+ * script.module.routing - http://mirrors.kodi.tv/addons/matrix/script.module.routing/
  
 ## Installation & Updates ##
 Install add-on via repository - provide automatic installation of updates:
