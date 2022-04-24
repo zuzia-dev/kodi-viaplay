@@ -1,3 +1,6 @@
+2022.04.24 v2.3.6
++ Added profiles support @heppen-dev and @Beanow
+
 2022.04.11 v2.3.5
 + Optimizations for additional information @heppen-dev
 + Fixed Unknown Video Info Key error @heppen-dev
