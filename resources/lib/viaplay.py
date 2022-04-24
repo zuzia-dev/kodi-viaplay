@@ -58,6 +58,7 @@ class Viaplay(object):
         self.device_key = 'xdk-%s' % self.country
         self.base_url = 'https://content.viaplay.{0}/{1}'.format(self.tld, self.device_key)
         self.login_api = 'https://login.viaplay.%s/api' % self.tld
+        self.profile_url = 'https://viaplay.mtg-api.com'
         try:
             self.cookie_jar.load(ignore_discard=True, ignore_expires=True)
         except IOError:
@@ -146,6 +147,13 @@ class Viaplay(object):
 
     def make_request(self, url, method, params=None, payload=None, headers=None):
         """Make an HTTP request. Return the response."""
+        if params == None:
+            params = {}
+
+        pid = self.get_setting('profile_id')
+        if pid:
+            params['profileId'] = pid
+
         try:
             return self._make_request(url, method, params=params, payload=payload, headers=headers)
         except self.ViaplayError:
@@ -302,6 +310,38 @@ class Viaplay(object):
                 stream['subtitles'] = subs_list
 
         return stream
+
+    def get_user_id(self):
+        url = self.login_api + '/persistentLogin/v1'
+        params = {
+            'deviceKey': self.device_key
+        }
+        data = self.make_request(url=url, method='get', params=params)
+        return {'id': data['userData']['userId'], 'token': data['userData']['accessToken']}
+
+    def get_profiles(self):
+        url = self.profile_url + f'/user-profiles/users/{self.get_user_id()["id"]}/profiles/'
+        params = {
+            'language': 'en'
+        }
+        headers = {
+            'authorization': f'MTG-AT {self.get_user_id()["token"]}'
+        }
+        data = self.make_request(url=url, method='get', params=params, headers=headers)
+
+        profiles = []
+
+        for profile in data['embedded']['profiles']:
+            profiles.append({
+                'name': profile['data']['name'],
+                'id': profile['data']['id'],
+                'avatar': profile['embedded']['avatar']['data']['url'],
+                'type': profile['data']['type'],
+                'owner': 'Owner' if profile['data']['isOwner'] else '',
+                'lang': profile['data']['language'].upper() if profile.get('data', {}).get('language') else ''
+            })
+
+        return profiles
 
     def get_root_page(self):
         """Dynamically builds the root page from the returned _links.

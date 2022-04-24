@@ -23,3 +23,7 @@ msgstr "Daugiau informacijos"
 msgctxt "#30070"
 msgid "No information"
 msgstr "Informacijos nėra"
+
+msgctxt "#30071"
+msgid "Select profile"
+msgstr "Pasirinkite profilį"

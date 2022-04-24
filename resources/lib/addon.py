@@ -139,7 +139,7 @@ def root():
     }
 
     for page in pages:
-        page['title'] = capitalize(page['title'])
+        page['title'] = helper.capitalize(page['title'])
 
         if 'logout' in page['href']:
             page['title'] = helper.language(30042)
@@ -150,8 +150,13 @@ def root():
             helper.add_item(page['title'], plugin.url_for(supported_pages[page['type']], url=page['href']))
         else:
             helper.log('Unsupported page found: %s' % page['name'])
+
+    helper.add_item(helper.language(30071), plugin.url_for(profiles))
     helper.eod()
 
+@plugin.route('/profiles')
+def profiles():
+    helper.profiles_dialog()
 
 @plugin.route('/start')
 def start():
@@ -430,9 +435,6 @@ def dialog():
 @plugin.route('/ia_settings')
 def ia_settings():
     helper.ia_settings()
-
-def capitalize(string):
-    return string[0].upper()+string[1:]
 
 def add_movie(movie):
     if movie['system'].get('guid'):

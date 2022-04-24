@@ -23,3 +23,7 @@ msgstr "Flere oplysninger"
 msgctxt "#30070"
 msgid "No information"
 msgstr "Ingen oplysninger tilgængelige"
+
+msgctxt "#30071"
+msgid "Select profile"
+msgstr "Vælg profil"

@@ -23,3 +23,7 @@ msgstr "Lisätietoja"
 msgctxt "#30070"
 msgid "No information"
 msgstr "Tietoja ei ole saatavilla"
+
+msgctxt "#30071"
+msgid "Select profile"
+msgstr "Valitse profiili"

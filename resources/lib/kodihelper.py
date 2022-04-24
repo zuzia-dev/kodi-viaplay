@@ -82,14 +82,17 @@ class KodiHelper(object):
             return "com"
         return country_code
 
-    def dialog(self, dialog_type, heading, message=None, options=None, nolabel=None, yeslabel=None):
+    def capitalize(self, string):
+        return string[0].upper()+string[1:]
+
+    def dialog(self, dialog_type, heading, message=None, options=None, nolabel=None, yeslabel=None, useDetails=False):
         dialog = xbmcgui.Dialog()
         if dialog_type == 'ok':
             dialog.ok(heading, message)
         elif dialog_type == 'yesno':
             return dialog.yesno(heading, message, nolabel=nolabel, yeslabel=yeslabel)
         elif dialog_type == 'select':
-            ret = dialog.select(heading, options)
+            ret = dialog.select(heading, options, useDetails=useDetails)
             if ret > -1:
                 return ret
             else:
@@ -102,6 +105,43 @@ class KodiHelper(object):
                 return None
         elif dialog_type == 'notification':
             dialog.notification(heading, message)
+
+    def ensure_profile(self):
+        if not self.vp.get_user_id():
+            self.vp.validate_session()
+        if not self.vp.get_setting('profile_id'):
+            self.profiles_dialog()
+
+    def profiles_dialog(self):
+        profiles_dict = self.vp.get_profiles()
+        profiles = []
+        pids = [profile['id'] for profile in profiles_dict]
+
+        for profile in profiles_dict:
+            if profile['owner']:
+                if profile['lang'] != '':
+                    info_line = f'{profile["owner"]}, {self.capitalize(profile["type"])}, {profile["lang"]}'
+                else:
+                    info_line = f'{profile["owner"]}, {self.capitalize(profile["type"])}'
+            else:
+                if profile['lang'] != '':
+                    info_line = f'{self.capitalize(profile["type"])}, {profile["lang"]}'
+                else:
+                    info_line = f'{self.capitalize(profile["type"])}'
+
+            li = xbmcgui.ListItem(
+                label=profile['name'],
+                label2=info_line
+            )
+            li.setArt({
+                'thumb': profile['avatar'],
+            })
+
+            profiles.append(li)
+
+        index = self.dialog('select', self.language(30071), options=profiles, useDetails=True)
+        if index is not None:
+            self.set_setting('profile_id', pids[index])
 
     def log_out(self):
         confirm = self.dialog('yesno', self.language(30042), self.language(30043))
@@ -217,10 +257,10 @@ class KodiHelper(object):
     def play(self, guid=None, url=None, pincode=None, tve='false'):
         if url and url != 'None':
             guid = self.vp.get_products(url)['products'][0]['system']['guid']
-        
+
         try:
             stream = self.vp.get_stream(guid, pincode=pincode, tve=tve)
-        
+
         except self.vp.ViaplayError as error:
             if error.value == 'MissingVideoError':
                 message = 'Content is missing'
