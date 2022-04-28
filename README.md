@@ -16,8 +16,7 @@ This add-on is unoffical and is not endorsed or supported by Viaplay in any way.
 -> NOTICE: This plugin is not compatible with Kodi 18 (Leia).
 -> We highly recommend upgrading to Kodi 19 (Matrix).
 ```
- * The version for Kodi 18 can be found here: https://github.com/zuzia-dev/kodi-viaplay/tree/K18
- * But this version may not contain all the fixes and features.
+ * The version for Kodi 18 can be found here: [plugin viaplay.K18](https://github.com/zuzia-dev/kodi-viaplay/archive/refs/heads/K18.zip), but this version may not contain all the fixes and features. More information: https://github.com/zuzia-dev/kodi-viaplay/tree/K18
 
 
 If you're installing straight from git, please make sure you've got the following modules installed:
