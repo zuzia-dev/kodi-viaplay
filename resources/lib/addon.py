@@ -30,7 +30,6 @@ params = dict(parse_qsl(sys.argv[2][1:]))
 helper = KodiHelper(base_url, handle)
 plugin = routing.Plugin()
 
-profile_path = xbmcvfs.translatePath(xbmcaddon.Addon().getAddonInfo('profile'))
 
 def run():
     mode = params.get('mode', None)
@@ -165,6 +164,11 @@ def start():
 
 @plugin.route('/search')
 def search():
+    if sys.version_info[0] > 2:
+        profile_path = xbmcvfs.translatePath(xbmcaddon.Addon().getAddonInfo('profile'))
+    else:
+        profile_path = xbmc.translatePath(xbmcaddon.Addon().getAddonInfo('profile'))
+
     file_name = os.path.join(profile_path, 'title_search.list')
     f = xbmcvfs.File(file_name, "rb")
     searches = sorted(f.read().splitlines())
