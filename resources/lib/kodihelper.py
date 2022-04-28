@@ -120,14 +120,14 @@ class KodiHelper(object):
         for profile in profiles_dict:
             if profile['owner']:
                 if profile['lang'] != '':
-                    info_line = f'{profile["owner"]}, {self.capitalize(profile["type"])}, {profile["lang"]}'
+                    info_line = '{0}, {1}, {2}'.format(profile["owner"], self.capitalize(profile["type"]), profile["lang"])
                 else:
-                    info_line = f'{profile["owner"]}, {self.capitalize(profile["type"])}'
+                    info_line = '{0}, {1}'.format(profile["owner"], self.capitalize(profile["type"]))
             else:
                 if profile['lang'] != '':
-                    info_line = f'{self.capitalize(profile["type"])}, {profile["lang"]}'
+                    info_line = '{0}, {1}'.format(self.capitalize(profile["type"]), profile["lang"])
                 else:
-                    info_line = f'{self.capitalize(profile["type"])}'
+                    info_line = self.capitalize(profile["type"])
 
             li = xbmcgui.ListItem(
                 label=profile['name'],

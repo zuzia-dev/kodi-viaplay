@@ -567,7 +567,7 @@ def add_sports_event(event):
         },
         {
             'heading': helper.language(30069),
-            'message': f'{format_title} | {original_title}' if original_title is not None else format_title
+            'message': '{0} | {1}'.format(format_title, original_title) if original_title is not None else format_title
         }
     ]
 
@@ -578,10 +578,10 @@ def add_sports_event(event):
 
     for index, plot in enumerate(synopsis):
         if index == 0:
-            plotx += f'{plot["heading"]} {plot["message"]}\n'
+            plotx += '{0} {1}\n'.format(plot["heading"], plot["message"])
         else:
             if plot['heading'] is not None:
-                plotx += f'{plot["heading"]}: {plot["message"]}.\n'
+                plotx += '{0}: {1}.\n'.format(plot["heading"], plot["message"])
 
     event_info = {
         'mediatype': 'video',

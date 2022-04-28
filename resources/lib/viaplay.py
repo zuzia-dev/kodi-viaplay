@@ -320,12 +320,12 @@ class Viaplay(object):
         return {'id': data['userData']['userId'], 'token': data['userData']['accessToken']}
 
     def get_profiles(self):
-        url = self.profile_url + f'/user-profiles/users/{self.get_user_id()["id"]}/profiles/'
+        url = self.profile_url + '/user-profiles/users/{0}/profiles/'.format(self.get_user_id()["id"])
         params = {
             'language': 'en'
         }
         headers = {
-            'authorization': f'MTG-AT {self.get_user_id()["token"]}'
+            'authorization': 'MTG-AT %s' % self.get_user_id()["token"]
         }
         data = self.make_request(url=url, method='get', params=params, headers=headers)
 
