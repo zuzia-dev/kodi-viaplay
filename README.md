@@ -28,9 +28,11 @@ If you're installing straight from git, please make sure you've got the followin
 ## Installation & Updates ##
 Install add-on via repository - provide automatic installation of updates:
 Download repository: [repository.heppen](https://github.com/heppen-dev/repository.heppen/raw/main/repository.heppen.zip)
+> NOTICE: Repository Temporarily Unavailable
 
 Or install it via Kodi file-manager:
  - add source: https://heppen-dev.github.io/ or https://zips.ovh/heppen
+> NOTICE: Repository Temporarily Unavailable
 
 Install add-on manually - updates should always be installed manually:
 - [plugin kodi-viaplay](https://github.com/zuzia-dev/kodi-viaplay/archive/refs/heads/master.zip)
