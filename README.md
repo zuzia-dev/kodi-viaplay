@@ -17,13 +17,6 @@ This add-on is unoffical and is not endorsed or supported by Viaplay in any way.
 -> We highly recommend upgrading to Kodi 19 (Matrix).
 ```
  * The version for Kodi 18 can be found here: [plugin viaplay.K18](https://github.com/zuzia-dev/kodi-viaplay/archive/refs/heads/K18.zip), but this version may not contain all the fixes and features. More information: https://github.com/zuzia-dev/kodi-viaplay/tree/K18
-
-
-If you're installing straight from git, please make sure you've got the following modules installed:
- * script.module.inputstreamhelper - http://mirrors.kodi.tv/addons/matrix/script.module.requests/
- * script.module.requests - http://mirrors.kodi.tv/addons/matrix/script.module.iso8601/
- * script.module.iso8601 - http://mirrors.kodi.tv/addons/matrix/script.module.inputstreamhelper/
- * script.module.routing - http://mirrors.kodi.tv/addons/matrix/script.module.routing/
  
 ## Installation & Updates ##
 Install add-on via repository - provide automatic installation of updates:
@@ -36,6 +29,12 @@ Or install it via Kodi file-manager:
 
 Install add-on manually - updates should always be installed manually:
 - [plugin kodi-viaplay](https://github.com/zuzia-dev/kodi-viaplay/archive/refs/heads/master.zip)
+
+If you're installing straight from git, please make sure you've got the following modules installed:
+ * script.module.inputstreamhelper - http://mirrors.kodi.tv/addons/matrix/script.module.inputstreamhelper/
+ * script.module.requests - http://mirrors.kodi.tv/addons/matrix/script.module.requests/
+ * script.module.iso8601 - http://mirrors.kodi.tv/addons/matrix/script.module.iso8601/
+ * script.module.routing - http://mirrors.kodi.tv/addons/matrix/script.module.routing/
 
 ## DRM protected streams ##
 Viaplay's content is DRM protected and requires the proprietary decryption module Widevine CDM for playback. You will be prompted to install this if you're attempting to play a stream without the binary installed.
