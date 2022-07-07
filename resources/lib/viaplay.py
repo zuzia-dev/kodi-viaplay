@@ -95,6 +95,8 @@ class Viaplay(object):
             country_code = 'lt'
         elif country_id == '6':
             country_code = 'nl'
+        elif country_id == '7':
+            country_code = 'ee'
 
         return country_code
     

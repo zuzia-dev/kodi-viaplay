@@ -288,3 +288,12 @@ msgstr "Brak informacji"
 msgctxt "#30071"
 msgid "Select profile"
 msgstr "Wybierz profil"
+
+msgctxt "#30072"
+msgid "viaplay.ee"
+msgstr ""
+
+msgctxt "#30073"
+msgid "Estonian"
+msgstr "Estoński"
+
