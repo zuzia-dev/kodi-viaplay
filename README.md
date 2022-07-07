@@ -20,21 +20,13 @@ This add-on is unoffical and is not endorsed or supported by Viaplay in any way.
  
 ## Installation & Updates ##
 Install add-on via repository - provide automatic installation of updates:
-Download repository: [repository.heppen](https://github.com/heppen-dev/repository.heppen/raw/main/repository.heppen.zip)
-> NOTICE: Repository Temporarily Unavailable
+Download repository: [Repozytorium-Kodi](https://repozytorium-kodi.github.io/Repozytorium-Kodi.zip)
 
 Or install it via Kodi file-manager:
- - add source: https://heppen-dev.github.io/ or https://zips.ovh/heppen
-> NOTICE: Repository Temporarily Unavailable
+ - add source: https://repozytorium-kodi.github.io
 
 Install add-on manually - updates should always be installed manually:
-- [plugin kodi-viaplay](https://github.com/zuzia-dev/kodi-viaplay/archive/refs/heads/master.zip)
-
-If you're installing straight from git, please make sure you've got the following modules installed:
- * script.module.inputstreamhelper - http://mirrors.kodi.tv/addons/matrix/script.module.inputstreamhelper/
- * script.module.requests - http://mirrors.kodi.tv/addons/matrix/script.module.requests/
- * script.module.iso8601 - http://mirrors.kodi.tv/addons/matrix/script.module.iso8601/
- * script.module.routing - http://mirrors.kodi.tv/addons/matrix/script.module.routing/
+### ->  [plugin kodi-viaplay](https://github.com/zuzia-dev/kodi-viaplay/archive/refs/heads/master.zip)
 
 ## DRM protected streams ##
 Viaplay's content is DRM protected and requires the proprietary decryption module Widevine CDM for playback. You will be prompted to install this if you're attempting to play a stream without the binary installed.
