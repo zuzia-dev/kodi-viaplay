@@ -297,3 +297,10 @@ msgctxt "#30073"
 msgid "Estonian"
 msgstr "Estoński"
 
+msgctxt "#30074"
+msgid "viaplay.com/gb"
+msgstr ""
+
+msgctxt "#30075"
+msgid "English"
+msgstr "Angielski"

@@ -97,6 +97,8 @@ class Viaplay(object):
             country_code = 'nl'
         elif country_id == '7':
             country_code = 'ee'
+        elif country_id == '8':
+            country_code = 'gb'
 
         return country_code
     
@@ -104,7 +106,7 @@ class Viaplay(object):
         return self.get_tld_for(self.get_country_code())
     
     def get_tld_for(self, country_code):
-        if country_code == "nl":
+        if country_code == "nl" or country_code == "gb":
             return "com"
         return country_code
 
