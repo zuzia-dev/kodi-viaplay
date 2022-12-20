@@ -8,21 +8,24 @@ from datetime import datetime
 from resources.lib.kodihelper import KodiHelper
 
 try:
-    import urllib.request, urllib.parse, urllib.error
-    from urllib.parse import urlencode, quote_plus, quote, unquote, parse_qsl
+    import urllib.error
+    import urllib.parse
+    import urllib.request
+    from urllib.parse import parse_qsl, quote, quote_plus, unquote, urlencode
 except ImportError:
     import urllib
     import urlparse
     from urllib import urlencode, quote_plus, quote, unquote
     from urlparse import parse_qsl
 
-import xbmc
+import json
+import os
+import re
+
+import routing
+import xbmcaddon
 import xbmcgui
 import xbmcvfs
-import xbmcaddon
-import routing
-import re
-import os
 
 base_url = sys.argv[0]
 handle = int(sys.argv[1])
@@ -31,6 +34,7 @@ helper = KodiHelper(base_url, handle)
 plugin = routing.Plugin()
 
 profile_path = xbmcvfs.translatePath(xbmcaddon.Addon().getAddonInfo('profile'))
+
 
 def run():
     mode = params.get('mode', None)
@@ -57,6 +61,7 @@ def run():
         else:
             show_error(error.value)
 
+
 def generate_m3u():
     sessionid = helper.authorize()
     if not sessionid:
@@ -71,30 +76,14 @@ def generate_m3u():
         return
     xbmcgui.Dialog().notification('Viaplay', helper.language(30063), xbmcgui.NOTIFICATION_INFO)
 
-    data = '#EXTM3U\n'
-
-    country_code = helper.get_country_code()
-    tld = helper.get_tld()
-    country_id = helper.get_setting('site')
-    if country_id == '0':
-        chann = 'kanaler'
-    elif country_id == '1':
-        chann = 'kanaler'
-    elif country_id == '2':
-        chann = 'kanaler'
-    elif country_id == '3':
-        chann = 'channels'
-    elif country_id == '4':
-        chann = 'channels'
-
-    url = 'https://content.viaplay.{c1}/xdk-{c2}/{chann}'.format(c1=tld, c2=country_code, chann=chann)
-
+    url = helper.generate_channel_url()
     response = helper.vp.make_request(url=url, method='get')
     channels_block = response['_embedded']['viaplay:blocks'][0]['_embedded']['viaplay:blocks']
     channels = [x['viaplay:channel']['content']['title'] for x in channels_block]
     images = [x['viaplay:channel']['_embedded']['viaplay:products'][0]['station']['images']['fallbackImage']['template'] for x in channels_block]
     guids = [x['viaplay:channel']['_embedded']['viaplay:products'][1]['epg']['channelGuids'][0] for x in channels_block]
 
+    data = '#EXTM3U\n'
     for i in range(len(channels)):
         image = images[i].split('{')[0]
 
@@ -435,6 +424,23 @@ def dialog():
 @plugin.route('/ia_settings')
 def ia_settings():
     helper.ia_settings()
+
+
+@plugin.route('/iptv/channels')
+def iptv_channels():
+    """Return JSON-STREAMS formatted data for all live channels"""
+    from resources.lib.iptvmanager import IPTVManager
+    port = int(plugin.args.get('port')[0])
+    IPTVManager(port).send_channels()
+
+
+@plugin.route('/iptv/epg')
+def iptv_epg():
+    """Return JSON-EPG formatted data for all live channel EPG data"""
+    from resources.lib.iptvmanager import IPTVManager
+    port = int(plugin.args.get('port')[0])
+    IPTVManager(port).send_epg()
+
 
 def add_movie(movie):
     if movie['system'].get('guid'):
