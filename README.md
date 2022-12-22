@@ -1,6 +1,5 @@
 ﻿# Viaplay unofficial add-on for Kodi
-This is a Kodi add-on that allows you to stream content from Viaplay in Kodi.
-
+This is a Kodi add-on that allows you to stream content from Viaplay in Kodi. This is a Kodi add-on that allows you to stream content from Viaplay in Kodi. Requires subscription. Add-on designed for versions: Polish, Swedish, Norwegian, Danish, Finnish, Dutch, Lithuanian, Estonian, English.
 ## Disclaimer ##
 This add-on is unoffical and is not endorsed or supported by Viaplay in any way. Any trademarks used belong to their owning companies and organisations. Use at Your Own Risk.
 
@@ -11,6 +10,7 @@ This add-on is unoffical and is not endorsed or supported by Viaplay in any way.
  * InputStream Adaptive add-on
  * InputStream Helper add-on
  * Widevine CDM library
+ * IPTV Manager for TV channel support (optional)
 
 ```diff
 -> NOTICE: This plugin is not compatible with Kodi 18 (Leia).
