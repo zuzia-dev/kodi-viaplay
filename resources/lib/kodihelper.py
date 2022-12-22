@@ -312,3 +312,18 @@ class KodiHelper(object):
         """Open InputStream Adaptive settings."""
         ia_addon = Addon('inputstream.adaptive')
         ia_addon.openSettings()
+
+    def generate_channel_url(self):
+        country_id = self.get_setting('site')
+        if country_id == '0':
+            chann = 'kanaler'
+        elif country_id == '1':
+            chann = 'kanaler'
+        elif country_id == '2':
+            chann = 'kanaler'
+        elif country_id == '3':
+            chann = 'channels'
+        elif country_id == '4':
+            chann = 'channels'
+
+        return f'https://content.viaplay.{self.get_tld()}/xdk-{self.get_country_code()}/{chann}'
