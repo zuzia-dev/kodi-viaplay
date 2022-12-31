@@ -1,5 +1,5 @@
 ﻿# Viaplay unofficial add-on for Kodi
-This is a Kodi add-on that allows you to stream content from Viaplay in Kodi.
+This is a Kodi add-on that allows you to stream content from Viaplay in Kodi. This is a Kodi add-on that allows you to stream content from Viaplay in Kodi. Requires subscription. Add-on designed for versions: Polish, Swedish, Norwegian, Danish, Finnish, Dutch, Lithuanian, Estonian, English.
 
 ## Disclaimer ##
 This add-on is unoffical and is not endorsed or supported by Viaplay in any way. Any trademarks used belong to their owning companies and organisations.
@@ -21,7 +21,7 @@ If you're installing straight from git, please make sure you've got the followin
  * script.module.iso8601  - http://mirrors.kodi.tv/addons/leia/script.module.iso8601/
  * script.module.inputstreamhelper - http://mirrors.kodi.tv/addons/leia/script.module.inputstreamhelper/
  * script.module.routing  - http://mirrors.kodi.tv/addons/leia/script.module.routing/
- 
+
 ## Installation & Updates ##
 Install add-on manually - updates should always be installed manually:
 ##### - [plugin kodi-viaplay (only Kodi 18)](https://github.com/zuzia-dev/kodi-viaplay/archive/refs/heads/K18.zip).

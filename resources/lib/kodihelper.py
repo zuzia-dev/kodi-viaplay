@@ -73,12 +73,16 @@ class KodiHelper(object):
             country_code = 'lt'
         elif country_id == '6':
             country_code = 'nl'
+        elif country_id == '7':
+            country_code = 'ee'
+        elif country_id == '8':
+            country_code = 'gb'
 
         return country_code
 
     def get_tld(self):
         country_code = self.get_country_code()
-        if country_code == "nl":
+        if country_code == "nl" or country_code == "gb":
             return "com"
         return country_code
 
