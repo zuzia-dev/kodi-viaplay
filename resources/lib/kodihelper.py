@@ -73,12 +73,16 @@ class KodiHelper(object):
             country_code = 'lt'
         elif country_id == '6':
             country_code = 'nl'
+        elif country_id == '7':
+            country_code = 'ee'
+        elif country_id == '8':
+            country_code = 'gb'
 
         return country_code
 
     def get_tld(self):
         country_code = self.get_country_code()
-        if country_code == "nl":
+        if country_code == "nl" or country_code == "gb":
             return "com"
         return country_code
 
@@ -296,7 +300,6 @@ class KodiHelper(object):
                 playitem.setProperty('inputstream', 'inputstream.adaptive')
             else:    
                 playitem.setProperty('inputstreamaddon', 'inputstream.adaptive')
-            playitem.setProperty('inputstream.adaptive.max_bandwidth', '99999999')
             playitem.setProperty('inputstream.adaptive.manifest_type', 'mpd')
             playitem.setProperty('inputstream.adaptive.manifest_update_parameter', 'full')
             playitem.setProperty('inputstream.adaptive.license_type', 'com.widevine.alpha')
@@ -309,3 +312,18 @@ class KodiHelper(object):
         """Open InputStream Adaptive settings."""
         ia_addon = Addon('inputstream.adaptive')
         ia_addon.openSettings()
+
+    def generate_channel_url(self):
+        country_id = self.get_setting('site')
+        if country_id == '0':
+            chann = 'kanaler'
+        elif country_id == '1':
+            chann = 'kanaler'
+        elif country_id == '2':
+            chann = 'kanaler'
+        elif country_id == '3':
+            chann = 'channels'
+        elif country_id == '4':
+            chann = 'channels'
+
+        return f'https://content.viaplay.{self.get_tld()}/xdk-{self.get_country_code()}/{chann}'
