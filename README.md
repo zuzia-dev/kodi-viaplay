@@ -1,21 +1,19 @@
-﻿# Viaplay unofficial add-on for Kodi 18
+﻿# Viaplay unofficial add-on for Kodi v18
 This is a Kodi add-on that allows you to stream content from Viaplay in Kodi. This is a Kodi add-on that allows you to stream content from Viaplay in Kodi. Requires subscription. Add-on designed for versions: Polish, Swedish, Norwegian, Danish, Finnish, Dutch, Lithuanian, Estonian, English.
 
 ## Disclaimer ##
 This add-on is unoffical and is not endorsed or supported by Viaplay in any way. Any trademarks used belong to their owning companies and organisations. Use at Your Own Risk.
 
 ## Prerequisites & Dependencies ##
+```diff
+-> NOTICE: This plugin is compatible with Kodi v18 (Leia). 
+```
  * A devices compatible with Kodi
  * System with Python 2.7 or later
  * InputStream Adaptive add-on
  * InputStream Helper add-on
  * Widevine CDM library
  * IPTV Manager for TV channels support (optional)
-
-```diff
--> NOTICE: This plugin is compatible with Kodi 18 (Leia). 
--> But we highly recommend upgrading to Kodi 19 (Matrix). 
-```
 
 If you're installing straight from git, please make sure you've got the following modules installed:
  * script.module.requests - http://mirrors.kodi.tv/addons/leia/script.module.requests/
@@ -25,7 +23,7 @@ If you're installing straight from git, please make sure you've got the followin
  
 ## Installation & Updates ##
 Install add-on manually - updates should always be installed manually:
-### ->   - [plugin kodi-viaplay (only Kodi 18)](https://github.com/zuzia-dev/kodi-viaplay/archive/refs/heads/K18.zip).
+### ->   - [plugin kodi-viaplay (for Kodi 18)](https://github.com/Repozytorium-Kodi/kodi-viaplay/archive/refs/heads/K18.zip)
 
 ## DRM protected streams ##
 Viaplay's content is DRM protected and requires the proprietary decryption module Widevine CDM for playback. You will be prompted to install this if you're attempting to play a stream without the binary installed.
